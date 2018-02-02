@@ -1,0 +1,18 @@
+---
+- name: Create Resources Folder
+  file:
+    path: dockerfolder
+    state: directory
+
+- name: Clone
+  git:
+    repo: "http://{{ username }}:{{ password }}@http://52.8.150.150/gitlab/Leachon/Tomcat.git"
+    dest: dockerfolder
+
+- name: Download war file
+  get_url:
+    url: "http://52.8.150.150/nexus/service/local/repositories/snapshots/content/DTSActivity/CurrencyConverter/1/CurrencyConverter-1.war"
+    dest: dockerfolder/Resources
+    mode: 0644
+    url_password: "{{ password }}"
+    url_username: "{{ username }}"

@@ -1,0 +1,5 @@
+---
+- hosts: tomcat
+  roles:
+    - DIWarFile
+    - DockerTask
